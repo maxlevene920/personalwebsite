@@ -142,107 +142,15 @@ src/
 - Contact form integration ready
 - Accessibility optimized
 
-## 🎨 Design System
-
-The website uses a comprehensive design system built with:
-
-- **Color Palette**: Custom CSS variables for consistent theming
-- **Typography**: Optimized font hierarchy and spacing
-- **Spacing**: Consistent spacing scale using Tailwind utilities
-- **Components**: Reusable UI components with variants
-- **Animations**: Coordinated animation system with Framer Motion
-
-## 📱 Responsive Design
-
-- **Mobile First**: Designed for mobile devices first
-- **Breakpoints**: Optimized for tablet and desktop
-- **Touch Friendly**: Proper touch targets and interactions
-- **Performance**: Optimized images and assets for all screen sizes
-
-## 🔧 Customization
-
-### Adding New Projects
-Edit `src/components/Projects.tsx` to add new portfolio items:
-
-```typescript
-const projects = [
-  {
-    title: 'Your Project',
-    description: 'Project description',
-    technologies: ['React', 'TypeScript', 'Tailwind'],
-    github: 'https://github.com/your-repo',
-    live: 'https://your-demo.com',
-    featured: true
-  }
-]
-```
-
-### Updating Skills
-Modify `src/components/Skills.tsx` to update your skill set:
-
-```typescript
-const skillCategories = [
-  {
-    title: 'Your Category',
-    skills: [
-      { name: 'Skill Name', level: 85 }
-    ]
-  }
-]
-```
-
-### Social Links
-Update `src/lib/social-links.ts` with your social media profiles:
-
-```typescript
-export const socialLinks = [
-  {
-    icon: Github,
-    href: 'https://github.com/your-username',
-    label: 'GitHub'
-  }
-]
-```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically on every push
-
-### Other Platforms
-- **Netlify**: Connect GitHub repository for automatic deployment
-- **AWS Amplify**: Full-stack deployment with backend services
-- **DigitalOcean App Platform**: Simple container deployment
-
-## 📈 Performance
-
-- **Lighthouse Score**: 95+ across all metrics
-- **Core Web Vitals**: Optimized for user experience
-- **Bundle Size**: Optimized with Next.js tree shaking
-- **Image Optimization**: Next.js Image component for optimal loading
-
-## 🤝 Contributing
-
-While this is a personal portfolio, I welcome feedback and suggestions:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📄 License
-
 This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-- **Email**: max@example.com
-- **LinkedIn**: [Max Levene](https://linkedin.com)
+- **Email**: mmaxwell.levene@gmail.com
+- **LinkedIn**: [Max Levene](https://www.linkedin.com/in/maxlevene/)
 - **GitHub**: [@maxlevene920](https://github.com/maxlevene920/)
-- **Twitter**: [@yourhandle](https://twitter.com)
+- **Twitter**: [@yourhandle](https://x.com/MaxLevene)
 
 ---
 
-**Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
+**Built using Next.js, TypeScript, and Tailwind CSS**
