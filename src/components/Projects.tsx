@@ -8,16 +8,30 @@ import { Project } from '../lib/types'
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
 
-  const handleProjectClick = (project: Project) => {
+  const handleProjectClick = (project: Project, index: number) => {
     setSelectedProject(project)
+    setCurrentProjectIndex(index)
     setIsDialogOpen(true)
   }
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false)
     setSelectedProject(null)
+  }
+
+  const handleNextProject = () => {
+    const nextIndex = (currentProjectIndex + 1) % projects.length
+    setCurrentProjectIndex(nextIndex)
+    setSelectedProject(projects[nextIndex])
+  }
+
+  const handlePreviousProject = () => {
+    const prevIndex = currentProjectIndex === 0 ? projects.length - 1 : currentProjectIndex - 1
+    setCurrentProjectIndex(prevIndex)
+    setSelectedProject(projects[prevIndex])
   }
 
   const projects: Project[] = [
@@ -279,7 +293,7 @@ export function Projects() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 cursor-pointer hover:border-primary/50"
-              onClick={() => handleProjectClick(project)}
+              onClick={() => handleProjectClick(project, index)}
             >
               <div className="relative overflow-hidden">
                 <div className="aspect-video bg-muted">
@@ -406,6 +420,10 @@ export function Projects() {
         project={selectedProject}
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}
+        onNext={handleNextProject}
+        onPrevious={handlePreviousProject}
+        totalProjects={projects.length}
+        currentProjectIndex={currentProjectIndex}
       />
     </section>
   )

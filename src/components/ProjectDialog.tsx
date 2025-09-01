@@ -1,19 +1,62 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink, Github, X, ArrowUpRight, Calendar, Users, Code } from 'lucide-react'
+import { ExternalLink, Github, X, ArrowUpRight, Calendar, Users, Code, ChevronLeft, ChevronRight } from 'lucide-react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Project } from '../lib/types'
 import { AssetGallery } from './AssetGallery'
+import { useEffect } from 'react'
 
 interface ProjectDialogProps {
   project: Project | null
   isOpen: boolean
   onClose: () => void
+  onNext: () => void
+  onPrevious: () => void
+  totalProjects: number
+  currentProjectIndex: number
 }
 
-export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) {
+export function ProjectDialog({ 
+  project, 
+  isOpen, 
+  onClose, 
+  onNext, 
+  onPrevious, 
+  totalProjects, 
+  currentProjectIndex 
+}: ProjectDialogProps) {
   if (!project) return null
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isOpen) return
+      
+      switch (event.key) {
+        case 'ArrowLeft':
+          event.preventDefault()
+          onPrevious()
+          break
+        case 'ArrowRight':
+          event.preventDefault()
+          onNext()
+          break
+        case 'Escape':
+          event.preventDefault()
+          onClose()
+          break
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isOpen, onNext, onPrevious, onClose])
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={onClose}>
@@ -36,6 +79,32 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
             className="fixed inset-4 z-50 overflow-y-auto"
           >
             <div className="flex min-h-full items-center justify-center p-4">
+              {/* Navigation arrows - positioned outside the dialog */}
+              {totalProjects > 1 && (
+                <>
+                  <button
+                    onClick={onPrevious}
+                    className={`fixed left-2 sm:left-8 top-1/2 -translate-y-1/2 p-2 sm:p-4 bg-background/90 backdrop-blur-sm rounded-full hover:bg-background hover:scale-110 transition-all duration-200 group shadow-lg border border-border z-60 ${
+                      currentProjectIndex === 0 ? 'opacity-60' : 'opacity-100'
+                    }`}
+                    title="Previous project (←)"
+                    aria-label="Go to previous project"
+                  >
+                    <ChevronLeft size={20} className="sm:w-7 sm:h-7 group-hover:text-primary transition-colors duration-200" />
+                  </button>
+                  <button
+                    onClick={onNext}
+                    className={`fixed right-2 sm:right-8 top-1/2 -translate-y-1/2 p-2 sm:p-4 bg-background/90 backdrop-blur-sm rounded-full hover:bg-background hover:scale-110 transition-all duration-200 group shadow-lg border border-border z-60 ${
+                      currentProjectIndex === totalProjects - 1 ? 'opacity-60' : 'opacity-100'
+                    }`}
+                    title="Next project (→)"
+                    aria-label="Go to next project"
+                  >
+                    <ChevronRight size={20} className="sm:w-7 sm:h-7 group-hover:text-primary transition-colors duration-200" />
+                  </button>
+                </>
+              )}
+
               <div className="relative w-full max-w-4xl bg-card border border-border rounded-xl shadow-2xl overflow-hidden">
                 {/* Header */}
                 <div className="relative h-64 bg-gradient-to-br from-primary/20 to-muted overflow-hidden">
@@ -66,18 +135,27 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
                   {/* Project title overlay */}
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-card to-transparent p-6">
                     <div className="flex items-center justify-between">
-                      <h2 className="text-3xl font-bold text-foreground">{project.title}</h2>
-                      {project.featured && (
-                        <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
-                          Featured
-                        </span>
-                      )}
+                      <div>
+                        <h2 className="text-3xl font-bold text-foreground">{project.title}</h2>
+                        {totalProjects > 1 && (
+                          <p className="text-sm text-muted-foreground mt-1">
+                            {currentProjectIndex + 1} of {totalProjects}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <motion.div 
+                  key={currentProjectIndex}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="p-6"
+                >
                   {/* Project metadata */}
                   <div className="flex flex-wrap gap-4 mb-6 text-sm text-muted-foreground">
                     {project.role && (
@@ -196,7 +274,7 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
                       </a>
                     )}
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
