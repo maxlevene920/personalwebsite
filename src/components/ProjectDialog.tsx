@@ -178,9 +178,23 @@ export function ProjectDialog({
                     )}
                   </div>
 
-                  {/* Project Gallery */}
-                  {project.assets && project.assets.length > 0 && (
-                    <AssetGallery assets={project.assets} />
+                  {/* Project Gallery or Video */}
+                  {project.title === 'Vamm.eco' ? (
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-foreground mb-3">Project Demo</h3>
+                      <div className="aspect-video w-full rounded-lg overflow-hidden">
+                        <iframe
+                          src="https://www.loom.com/embed/2fd0cb3184eb47bba61e463d0f9d18f7?sid=67884621-6544-4888-9200-fec88b1eefe1"
+                          frameBorder="0"
+                          className="w-full h-full"
+                          allowFullScreen
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    project.assets && project.assets.length > 0 && (
+                      <AssetGallery assets={project.assets} />
+                    )
                   )}
 
                   {/* Description */}
@@ -270,7 +284,7 @@ export function ProjectDialog({
                         className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
                       >
                         <ArrowUpRight size={18} />
-                        Live Demo
+                        {project.title === 'Vamm.eco' ? 'Link to Demo' : 'Live Demo'}
                       </a>
                     )}
                   </div>

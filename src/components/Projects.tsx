@@ -96,34 +96,34 @@ export function Projects() {
       ]
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      longDescription: 'A modern task management platform designed for teams to collaborate effectively. Features real-time updates, intuitive drag-and-drop interface, and comprehensive project tracking capabilities.',
-      image: '/api/placeholder/400/250',
-      technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      title: 'Vamm.eco',
+      description: 'A comprehensive AI-RAG based ESG Consultation for your new renewable energy projects.',
+      longDescription: 'It is essential for potential projects to qualify for regional ESG requirements. Without meeting ESG requirements, projects will face roadblocks to getting funding, thus delaying deployment of impactful renewable energy technologies. To meet these requirements, project contractors consult with various consultants and engage in manual diligence. The diligence process takes extended amounts of time and is very expensive (1-3 years before building starts!). To accelerate this process, we created an all-in-one ESG consultant that gives an overall score based off general project information, and provides a more detailed analysis on Environmental, Social, and Governance implications for the project.',
+      image: '/projects/vamm/groupphotovamm.jpeg',
+      technologies: ['Docker', 'Streamlit', 'Supabase', 'crawl4ai', 'OpenAI API', 'LangChain'],
+      github: 'https://github.com/maxlevene920/ClimateHackathon',
+      live: 'https://www.loom.com/share/2fd0cb3184eb47bba61e463d0f9d18f7?sid=67884621-6544-4888-9200-fec88b1eefe1',
       featured: true,
-      role: 'Frontend Developer',
-      duration: '2 months',
+      role: 'Developer',
+      duration: '24 Hours',
       teamSize: '3 developers',
       features: [
-        'Real-time task updates and notifications',
-        'Drag-and-drop task organization',
-        'Team collaboration and comments',
-        'Project progress tracking',
-        'File attachments and sharing',
-        'Mobile-responsive design'
+        'Comprehensive ESG scoring based on project location and specifications',
+        'Detailed analysis of Environmental, Social, and Governance implications',
+        'Location-specific recommendations and requirements',
+        'Real-time visualization of renewable energy projects',
+        'Environmental Agent: Powered by biodiversity and geolocation data',
+        'Social Agent: Leveraging census data and demographic marketing insights',
+        'Governance Agent: Connected to permit and regulatory requirement databases',
+        'RAG Agent utilizing vector database to retrieve relevant information and answer questions'
       ],
       challenges: [
-        'Implementing real-time updates without overwhelming the UI',
-        'Creating smooth drag-and-drop interactions across different devices',
-        'Optimizing performance with large task lists'
+        'Time-crunch to create a full-stack application in 24 hours',
+        'Processing large amounts of data from multiple sources',
+        'Response consistency, quality, and reliability from the model'
       ],
       awards: [
-        "Best UI/UX Design Award at TechCrunch Disrupt 2024",
-        "Featured in Product Hunt Weekly Newsletter",
-        'Top 10 Productivity Apps of 2024'
+        "Third place Climate Hackathon for Renewable Energy",
       ],
       assets: [
         {
@@ -387,7 +387,7 @@ export function Projects() {
                       onClick={(e) => e.stopPropagation()}
                     >
                       <ArrowUpRight size={16} />
-                      Live Demo
+                      {project.title === 'Vamm.eco' ? 'Link to Demo' : 'Live Demo'}
                     </a>
                   )}
                 </div>
