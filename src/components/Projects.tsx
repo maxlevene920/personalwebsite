@@ -22,30 +22,63 @@ export function Projects() {
 
   const projects: Project[] = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce platform built with Next.js, TypeScript, and Stripe. Features include user authentication, product management, and payment processing.',
-      longDescription: 'This comprehensive e-commerce solution provides a complete online shopping experience with advanced features like real-time inventory management, secure payment processing, and an intuitive admin dashboard. The platform handles complex business logic including order management, customer accounts, and analytics.',
-      image: '/api/placeholder/400/250',
-      technologies: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS', 'Prisma'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      title: 'SeqSens',
+      description: 'A langchain based tool for analyzing and predicting gene expression data.',
+      longDescription: 'For biotech companies that are working with genomics data at scale, it is imperative that raw sequencing data is normalized and processed for downstream computational tasks in a timely manner.\n\nA tedious part of the process for bioinformatics analysis of gene expression data is matching control/perturbed sample splits for differential expression analysis. This often requires manual intervention from a bioinformatician to:\n\n- understand the experiment being conducted\n- understand which samples are control and which are perturbed\n- understand all possible splits of control/perturbed samples\n\nWith the rise of LLMs, we see an opportunity to automate this tedious, manual process. The metadata attached to gene expression profiling datasets is often free text and can be used as input to a fine-tuned LLM for summarization of the experimental procedures and automatic stratification of control/perturbed samples. This can increase the speed at which gene expression data is analyzed and free up bioinformaticians to perform more meaningful, high impact work.',
+      image: '/projects/seqsens/SeqSensWinning.jpeg',
+      technologies: ['Python', 'Streamlit', 'bs4', 'Pandas', 'LangChain', 'OpenAI API'],
+      github: 'https://github.com/maxlevene920/SeqSense',
       featured: true,
-      role: 'Full Stack Developer',
-      duration: '3 months',
-      teamSize: 'Solo',
+      role: 'Developer',
+      duration: '2 weeks',
+      teamSize: '4',
       features: [
-        'User authentication and authorization',
-        'Product catalog with search and filtering',
-        'Shopping cart and checkout process',
-        'Payment integration with Stripe',
-        'Order management and tracking',
-        'Admin dashboard for inventory management',
-        'Responsive design for all devices'
+        'GEO Dataset Scraping',
+        'AI-Powered Sample Classification',
+        'User-Friendly Web Interface',
+        'Command-Line Interface',
+        'Fine-tuning Data Collection',
       ],
       challenges: [
-        'Implementing secure payment processing while maintaining good UX',
-        'Optimizing database queries for large product catalogs',
-        'Creating a scalable architecture for future growth'
+        'Fine tuning the model to perform sample classification',
+        'Crawling the GEO database to collect metadata',
+      ],
+      awards: [
+        'Third Place Bio x AI Hackathon 2024'
+      ],
+      assets: [
+        {
+          id: 'seqsens-1',
+          type: 'image',
+          url: '/projects/seqsens/SeqSensphoto1.png',
+          filename: 'SeqSensphoto1.png',
+          description: "SeqSens Landing Page",
+          uploadedAt: new Date('2024-01-15')
+        },
+        {
+          id: 'seqsens-2',
+          type: 'image',
+          url: '/projects/seqsens/SeqSensphoto2_summary.png',
+          filename: 'SeqSensphoto2_summary.png',
+          description: "Dataset summary showing gene expression analysis results",
+          uploadedAt: new Date('2024-01-16')
+        },
+        {
+          id: 'seqsens-3',
+          type: 'image',
+          url: '/projects/seqsens/SeqSensPhoto3_classification.png',
+          filename: 'SeqSensPhoto3_classification.png',
+          description: "Classification results for data samples",
+          uploadedAt: new Date('2024-01-17')
+        },
+        {
+          id: 'seqsens-4',
+          type: 'image',
+          url: '/projects/seqsens/SeqSensWinning.jpeg',
+          filename: 'SeqSensWinning.jpeg',
+          description: "SeqSens team winning third place at Bio x AI Hackathon 2024",
+          uploadedAt: new Date('2024-01-18')
+        }
       ]
     },
     {
@@ -72,6 +105,29 @@ export function Projects() {
         'Implementing real-time updates without overwhelming the UI',
         'Creating smooth drag-and-drop interactions across different devices',
         'Optimizing performance with large task lists'
+      ],
+      awards: [
+        "Best UI/UX Design Award at TechCrunch Disrupt 2024",
+        "Featured in Product Hunt Weekly Newsletter",
+        'Top 10 Productivity Apps of 2024'
+      ],
+      assets: [
+        {
+          id: 'taskapp-1',
+          type: 'image',
+          url: '/projects/task-management/kanban-board.png',
+          filename: 'kanban-board.png',
+          description: "Kanban board view with drag-and-drop functionality",
+          uploadedAt: new Date('2024-02-10')
+        },
+        {
+          id: 'taskapp-2',
+          type: 'video',
+          url: '/projects/task-management/demo-video.mp4',
+          filename: 'demo-video.mp4',
+          description: "Walkthrough of the task management application features",
+          uploadedAt: new Date('2024-02-12')
+        }
       ]
     },
     {
@@ -98,6 +154,10 @@ export function Projects() {
         'Integrating multiple weather APIs for comprehensive data',
         'Creating smooth animations for weather transitions',
         'Optimizing chart performance with real-time data'
+      ],
+      awards: [
+        "Featured in Weather App Showcase 2024",
+        'Community Choice Award for Best Weather Interface'
       ]
     },
     {
@@ -124,6 +184,10 @@ export function Projects() {
         'Creating engaging animations without affecting performance',
         'Ensuring accessibility across all devices',
         'Optimizing for search engines while maintaining design quality'
+      ],
+      awards: [
+        'Best Portfolio Design Award 2024',
+        "Featured in Web Design Weekly"
       ]
     },
     {
@@ -150,6 +214,10 @@ export function Projects() {
         'Implementing real-time messaging with low latency',
         'Handling file uploads and storage efficiently',
         'Managing user authentication and security'
+      ],
+      awards: [
+        'Best Communication App Award 2024',
+        "Featured in Developer Tools Monthly"
       ]
     },
     {
@@ -176,6 +244,10 @@ export function Projects() {
         'Integrating with external recipe APIs effectively',
         'Creating an intuitive search and filter system',
         'Optimizing for users with dietary restrictions'
+      ],
+      awards: [
+        'Best Food & Lifestyle App 2024',
+        "Featured in App Store Editors Choice"
       ]
     }
   ]
@@ -210,13 +282,23 @@ export function Projects() {
               onClick={() => handleProjectClick(project)}
             >
               <div className="relative overflow-hidden">
-                <div className="aspect-video bg-muted flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ExternalLink size={24} className="text-primary" />
+                <div className="aspect-video bg-muted">
+                  {project.image && project.image !== '/api/placeholder/400/250' ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <ExternalLink size={24} className="text-primary" />
+                        </div>
+                        <p className="text-sm text-muted-foreground">Project Preview</p>
+                      </div>
                     </div>
-                    <p className="text-sm text-muted-foreground">Project Preview</p>
-                  </div>
+                  )}
                 </div>
                 
                 {/* Overlay with links */}
@@ -230,15 +312,17 @@ export function Projects() {
                   >
                     <Github size={20} />
                   </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-background rounded-lg hover:bg-accent transition-colors duration-200"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ExternalLink size={20} />
-                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-background rounded-lg hover:bg-accent transition-colors duration-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -280,16 +364,18 @@ export function Projects() {
                     <Github size={16} />
                     Code
                   </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <ArrowUpRight size={16} />
-                    Live Demo
-                  </a>
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ArrowUpRight size={16} />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

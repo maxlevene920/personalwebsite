@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Github, X, ArrowUpRight, Calendar, Users, Code } from 'lucide-react'
 import * as Dialog from '@radix-ui/react-dialog'
 import { Project } from '../lib/types'
+import { AssetGallery } from './AssetGallery'
 
 interface ProjectDialogProps {
   project: Project | null
@@ -38,14 +39,22 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
               <div className="relative w-full max-w-4xl bg-card border border-border rounded-xl shadow-2xl overflow-hidden">
                 {/* Header */}
                 <div className="relative h-64 bg-gradient-to-br from-primary/20 to-muted overflow-hidden">
-                  <div className="absolute inset-0 bg-muted flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <ExternalLink size={32} className="text-primary" />
+                  {project.image && project.image !== '/api/placeholder/400/250' ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-muted flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <ExternalLink size={32} className="text-primary" />
+                        </div>
+                        <p className="text-muted-foreground">Project Preview</p>
                       </div>
-                      <p className="text-muted-foreground">Project Preview</p>
                     </div>
-                  </div>
+                  )}
                   
                   {/* Close button */}
                   <Dialog.Close asChild>
@@ -91,6 +100,11 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
                     )}
                   </div>
 
+                  {/* Project Gallery */}
+                  {project.assets && project.assets.length > 0 && (
+                    <AssetGallery assets={project.assets} />
+                  )}
+
                   {/* Description */}
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-foreground mb-3">About this project</h3>
@@ -129,6 +143,21 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
                     </div>
                   )}
 
+                  {/* Awards */}
+                  {project.awards && project.awards.length > 0 && (
+                    <div className="mb-6">
+                      <h3 className="text-lg font-semibold text-foreground mb-3">Awards & Recognition</h3>
+                      <ul className="space-y-2">
+                        {project.awards.map((award, index) => (
+                          <li key={index} className="flex items-start gap-3">
+                            <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-muted-foreground">{award}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Technologies */}
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-foreground mb-3">Technologies Used</h3>
@@ -155,15 +184,17 @@ export function ProjectDialog({ project, isOpen, onClose }: ProjectDialogProps) 
                       <Github size={18} />
                       View Code
                     </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
-                    >
-                      <ArrowUpRight size={18} />
-                      Live Demo
-                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors duration-200"
+                      >
+                        <ArrowUpRight size={18} />
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
