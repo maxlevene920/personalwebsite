@@ -145,33 +145,32 @@ export function Projects() {
       ]
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A beautiful weather dashboard that displays current weather and forecasts using OpenWeatherMap API with interactive charts and maps.',
-      longDescription: 'An elegant weather application that provides comprehensive weather information with beautiful visualizations. Features interactive charts, detailed forecasts, and location-based weather data.',
+      title: 'Canary - eBike Monitoring System Prototype',
+      description: 'A mapbox based frontend for a monitoring system for electric bikes in NYC to prevent battery fires.',
+      longDescription: 'A prototype for a monitoring system for electric bikes in NYC to prevent battery fires. This would be integrated with a backend that would be able to track the location of the bike, the battery level, and the temperature of the battery.',
       image: '/api/placeholder/400/250',
       technologies: ['React', 'Chart.js', 'OpenWeatherMap API', 'CSS3'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+      github: 'https://github.com/maxlevene920/BatteryHackathon',
+      live: 'https://battery-hackathon.vercel.app/',
       featured: false,
-      role: 'Frontend Developer',
-      duration: '1 month',
-      teamSize: 'Solo',
+      role: 'Lead Developer',
+      duration: '4 hours',
+      teamSize: 'Three',
       features: [
-        'Current weather display with detailed metrics',
-        '7-day weather forecast',
-        'Interactive charts and graphs',
-        'Location-based weather data',
-        'Responsive design for all devices',
-        'Dark/light theme toggle'
+        'Interactive Map Visualization with Geographic Clustering',
+        'Real-Time Fleet Monitoring Dashboard with Mock Data Simulation',
+        'Battery Health Simulation & Risk Assessment Engine',
+        'Emergency Response System with Incident Workflow Management',
+        'Responsive Dashboard Architecture with Component-Based Design',
       ],
       challenges: [
-        'Integrating multiple weather APIs for comprehensive data',
-        'Creating smooth animations for weather transitions',
+        'Logic for predicting battery fires',
+        'Large dataset integration with UI',
         'Optimizing chart performance with real-time data'
       ],
       awards: [
-        "Featured in Weather App Showcase 2024",
-        'Community Choice Award for Best Weather Interface'
+        "Hackathon third place",
+        'Led to NHS contract'
       ]
     },
     {
